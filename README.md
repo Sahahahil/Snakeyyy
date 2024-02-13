@@ -43,6 +43,17 @@ Here's a breakdown of the key components and functionality:
 8. **Level Selection:**
    - At the start and after each collision, the player is prompted to choose a game level.
    - ![image](https://github.com/Sahahahil/Snakeyyy/assets/152237857/51c4c001-a68f-4d3d-bcc7-72615732554d)
+   - The level 1 is as shown as below:
+   - ![image](https://github.com/Sahahahil/Snakeyyy/assets/152237857/5b9b10a7-cd2a-4601-8b59-4c2241443fb5)
+   - The level 2 is as shown as below:
+   - ![image](https://github.com/Sahahahil/Snakeyyy/assets/152237857/f9d080fe-8de8-45d4-b217-de8557526592)
+   - The level 3 is as shown as below:
+   - ![image](https://github.com/Sahahahil/Snakeyyy/assets/152237857/ba85c999-7f4f-43a4-8435-4b3342795b4b)
+  
+   - [[Subjected to change later in the future; still in development]]
+
+
+
 
 
 9. **Graphics:**
