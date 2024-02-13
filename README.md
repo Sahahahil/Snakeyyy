@@ -46,15 +46,9 @@ Here's a breakdown of the key components and functionality:
    - The level 1 is as shown as below:
    - ![image](https://github.com/Sahahahil/Snakeyyy/assets/152237857/5b9b10a7-cd2a-4601-8b59-4c2241443fb5)
    - The level 2 is as shown as below:
-   - ![image](https://github.com/Sahahahil/Snakeyyy/assets/152237857/f9d080fe-8de8-45d4-b217-de8557526592)
+   - ![image](https://github.com/Sahahahil/Snakeyyy/assets/152237857/a31f71df-e3b5-4146-80a3-c549aab076aa)
    - The level 3 is as shown as below:
-   - ![image](https://github.com/Sahahahil/Snakeyyy/assets/152237857/ba85c999-7f4f-43a4-8435-4b3342795b4b)
-  
-   - [[Subjected to change later in the future; still in development]]
-
-
-
-
+   - ![image](https://github.com/Sahahahil/Snakeyyy/assets/152237857/d418d6f5-1c1d-4393-9538-555fc9263b19)
 
 9. **Graphics:**
    - Turtle graphics are used to draw the snake, food, walls, and borders.
@@ -64,3 +58,6 @@ Here's a breakdown of the key components and functionality:
     - The game runs indefinitely until manually terminated.
 
 Players can control the snake's movement, collect food, and aim for a high score while facing increased challenges at higher levels.
+
+
+[[Subjected to change later in the future; still in development]]
