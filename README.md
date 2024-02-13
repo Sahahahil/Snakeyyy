@@ -42,6 +42,8 @@ Here's a breakdown of the key components and functionality:
 
 8. **Level Selection:**
    - At the start and after each collision, the player is prompted to choose a game level.
+   - ![image](https://github.com/Sahahahil/Snakeyyy/assets/152237857/51c4c001-a68f-4d3d-bcc7-72615732554d)
+
 
 9. **Graphics:**
    - Turtle graphics are used to draw the snake, food, walls, and borders.
