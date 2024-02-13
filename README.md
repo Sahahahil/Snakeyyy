@@ -50,4 +50,4 @@ Here's a breakdown of the key components and functionality:
 10. **Termination:**
     - The game runs indefinitely until manually terminated.
 
-This project provides a good example of a simple game implementation using Python's Turtle graphics. Players can control the snake's movement, collect food, and aim for a high score while facing increased challenges at higher levels.
+Players can control the snake's movement, collect food, and aim for a high score while facing increased challenges at higher levels.
