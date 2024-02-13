@@ -81,14 +81,24 @@ def create_wall(shape, color, stretch_wid, stretch_len):
     wall.goto(x, y)
     walls.append(wall)
 
-# Create walls for levels 2 and 3
-if level == 2 or level == 3:
+# Create walls for levels 2
+if level == 2:
     # Create vertical walls
-    for _ in range(15):
+    for _ in range(10):
+        create_wall("square", "dark green", 5, 1)
+
+    # Create horizontal walls
+    for _ in range(10):
+        create_wall("square", "dark green", 1, 5)
+
+# Create walls for levels 3
+if level == 3:
+    # Create vertical walls
+    for _ in range(20):
         create_wall("square", "dark green", 3, 1)
 
     # Create horizontal walls
-    for _ in range(15):
+    for _ in range(20):
         create_wall("square", "dark green", 1, 3)
 
 segments = []
@@ -165,14 +175,24 @@ def reset_game():
     else:
         delay = 0.05
 
-    # Create walls for levels 2 and 3
-    if level == 2 or level == 3:
+    # Create walls for levels 2
+    if level == 2:
+    # Create vertical walls
+        for _ in range(10):
+            create_wall("square", "dark green", 5, 1)
+
+        # Create horizontal walls
+        for _ in range(10):
+            create_wall("square", "dark green", 1, 5)
+
+    # Create walls for levels 3
+    if level == 3:
         # Create vertical walls
-        for _ in range(15):
+        for _ in range(20):
             create_wall("square", "dark green", 3, 1)
 
         # Create horizontal walls
-        for _ in range(15):
+        for _ in range(20):
             create_wall("square", "dark green", 1, 3)
 
     # Rebind keyboard events
