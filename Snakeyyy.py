@@ -75,13 +75,26 @@ def create_wall(shape, color, stretch_wid, stretch_len):
     wall.shape(shape)
     wall.color(color)
     wall.penup()
-    wall.shapesize(stretch_wid=stretch_wid, stretch_len=stretch_len)  # Corrected order
-    x = random.randint(-290, 290)
-    y = random.randint(-290, 290)
+
+    # Check for overlapping positions with existing walls
+    while True:
+        x = random.randint(-290, 290)
+        y = random.randint(-290, 290)
+
+        if not position_overlaps_with_wall(x, y):
+            break
+
     wall.goto(x, y)
+    wall.shapesize(stretch_wid=stretch_wid, stretch_len=stretch_len)
     walls.append(wall)
 
-# Create walls for levels 2
+def position_overlaps_with_wall(x, y):
+    for wall in walls:
+        if wall.distance(x, y) < 60:
+            return True
+    return False
+
+# Create walls for levels 2 and 3
 if level == 2:
     # Create vertical walls
     for _ in range(10):
@@ -91,14 +104,13 @@ if level == 2:
     for _ in range(10):
         create_wall("square", "dark green", 1, 5)
 
-# Create walls for levels 3
-if level == 3:
+elif level == 3:
     # Create vertical walls
-    for _ in range(20):
+    for _ in range(15):
         create_wall("square", "dark green", 3, 1)
 
     # Create horizontal walls
-    for _ in range(20):
+    for _ in range(15):
         create_wall("square", "dark green", 1, 3)
 
 segments = []
@@ -144,7 +156,7 @@ def move():
         head.setx(head.xcor() + 20)
 
 def reset_game():
-    global score, delay
+    global score, delay, level
     time.sleep(1)
     head.goto(0, 0)
     head.direction = "Stop"
@@ -175,9 +187,9 @@ def reset_game():
     else:
         delay = 0.05
 
-    # Create walls for levels 2
+    # Create walls for levels 2 and 3
     if level == 2:
-    # Create vertical walls
+        # Create vertical walls
         for _ in range(10):
             create_wall("square", "dark green", 5, 1)
 
@@ -185,14 +197,13 @@ def reset_game():
         for _ in range(10):
             create_wall("square", "dark green", 1, 5)
 
-    # Create walls for levels 3
-    if level == 3:
+    elif level == 3:
         # Create vertical walls
-        for _ in range(20):
+        for _ in range(15):
             create_wall("square", "dark green", 3, 1)
 
         # Create horizontal walls
-        for _ in range(20):
+        for _ in range(15):
             create_wall("square", "dark green", 1, 3)
 
     # Rebind keyboard events
@@ -205,12 +216,6 @@ def reset_game():
 def update_score():
     pen.clear()
     pen.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal"))
-
-def position_overlaps_with_wall(x, y):
-    for wall in walls:
-        if wall.distance(x, y) < 60:
-            return True
-    return False
 
 # Keyboard bindings
 wn.listen()
@@ -232,12 +237,8 @@ while True:
         reset_game()
 
     if head.distance(food) < 20:
-        while True:
-            x = random.randint(-290, 290)
-            y = random.randint(-290, 290)
-            if not position_overlaps_with_wall(x, y):
-                break
-        food.goto(x, y)
+        food_x, food_y = generate_food_position()
+        food.goto(food_x, food_y)
 
         new_segment = turtle.Turtle()
         new_segment.speed(0)
