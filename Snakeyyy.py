@@ -51,19 +51,11 @@ level = turtle.numinput("Snake Game", "Choose a level (1 for easy, 2 for medium,
 
 # Adjust speed based on the selected level
 if level == 1:
-    delay = 0.15
+    delay = 0.05
 elif level == 2:
     delay = 0.1
 else:
     delay = 0.05
-
-# Function to generate a new food position that doesn't overlap with walls
-def generate_food_position():
-    while True:
-        x = random.randint(-290, 290)
-        y = random.randint(-290, 290)
-        if not position_overlaps_with_wall(x, y):
-            return x, y
 
 # Walls
 walls = []
@@ -81,7 +73,7 @@ def create_wall(shape, color, stretch_wid, stretch_len):
         x = random.randint(-290, 290)
         y = random.randint(-290, 290)
 
-        if not position_overlaps_with_wall(x, y):
+        if not position_overlaps_with_wall(x, y) and not is_position_at_center(x, y):
             break
 
     wall.goto(x, y)
@@ -93,6 +85,29 @@ def position_overlaps_with_wall(x, y):
         if wall.distance(x, y) < 60:
             return True
     return False
+
+def is_position_at_center(x, y):
+    return -50 < x < 50 and -50 < y < 50
+
+# Function to generate a new food position that doesn't overlap with walls
+def generate_food_position():
+    while True:
+        x = random.randint(-290, 290)
+        y = random.randint(-290, 290)
+        if not position_overlaps_with_wall(x, y):
+            if not position_overlap_with_new_walls(x, y):
+                return x, y
+
+def position_overlap_with_new_walls(x, y):
+    for wall in walls:
+        if wall.distance(x, y) < 60:
+            return True
+    return False
+
+# Function to spawn food at a new location
+def spawn_food_at_new_location():
+    food_x, food_y = generate_food_position()
+    food.goto(food_x, food_y)
 
 # Create walls for levels 2 and 3
 if level == 2:
@@ -181,7 +196,7 @@ def reset_game():
 
     # Adjust speed based on the selected level
     if level == 1:
-        delay = 0.15
+        delay = 0.05
     elif level == 2:
         delay = 0.1
     else:
@@ -206,6 +221,9 @@ def reset_game():
         for _ in range(15):
             create_wall("square", "dark green", 1, 3)
 
+    # Spawn food at a new location
+    spawn_food_at_new_location()
+
     # Rebind keyboard events
     wn.listen()
     wn.onkeypress(go_up, "Up")
@@ -216,6 +234,7 @@ def reset_game():
 def update_score():
     pen.clear()
     pen.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal"))
+
 
 # Keyboard bindings
 wn.listen()
